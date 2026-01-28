@@ -50,12 +50,12 @@ def write_req(
     dependencies = []
 
     if pkg_dir is not None:
-        pkg_dir = pathlib.Path(pkg_dir)
+        check = pathlib.Path(pkg_dir)
 
-        if not pkg_dir.is_dir():
+        if not check.is_dir():
             raise click.BadOptionUsage("--pkg-path/-p", "dir is not a valid dir")
 
-        if not pkg_dir.exists():
+        if not check.exists():
             raise click.BadOptionUsage("--pkg-path/-p", "dir does not exist")
 
         dependencies.append(f"--find-links {pkg_dir}")
